@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fórum Pampulha e Região</title>
+    <style>
+        /* Estilos base para simular o formato de uma aplicação móvel */
+        body { 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            margin: 0; 
+            padding: 0; 
+            background-color: #e9ecef; 
+            display: flex; 
+            justify-content: center; 
+        }
+        
+        .app-container { 
+            width: 100%; 
+            max-width: 414px; /* Largura padrão de telemóvel */
+            background: #ffffff; 
+            min-height: 100vh; 
+            display: flex; 
+            flex-direction: column; 
+            position: relative; 
+            box-shadow: 0 0 15px rgba(0,0,0,0.2); 
+        }
+
+        header { 
+            background: #004a8f; 
+            color: white; 
+            padding: 20px; 
+            text-align: center; 
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        header h1 {
+            margin: 0;
+            font-size: 20px;
+        }
+
+        main { 
+            flex: 1; 
+            padding: 20px; 
+            overflow-y: auto; 
+            padding-bottom: 80px; /* Espaço para a barra de navegação */
+        }
+
+        /* Controlo dos separadores */
+        .tab-content { display: none; }
+        .tab-content.active { display: block; animation: fadeIn 0.3s; }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Estilo dos cartões de informação */
+        .card { 
+            background: #f8f9fa; 
+            border: 1px solid #dee2e6; 
+            border-radius: 10px; 
+            padding: 15px; 
+            margin-bottom: 15px; 
+        }
+        
+        .card h4 { margin-top: 0; margin-bottom: 10px; color: #004a8f; }
+        .card p { margin: 0; font-size: 14px; color: #495057; line-height: 1.5; }
+
+        /* Botões de Emergência */
+        .contact-btn { 
+            display: block; 
+            width: 100%; 
+            color: white; 
+            text-align: center; 
+            padding: 12px; 
+            border-radius: 8px; 
+            text-decoration: none; 
+            margin-bottom: 10px; 
+            font-weight: bold;
+            box-sizing: border-box;
+        }
+
+        /* Espaço reservado para o mapa */
+        .map-placeholder { 
+            background: #e9ecef; 
+            height: 250px; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            border: 2px dashed #adb5bd; 
+            border-radius: 10px; 
+            color: #6c757d;
+            font-weight: bold;
+        }
+
+        /* Formulários */
+        label { font-size: 14px; font-weight: bold; color: #495057; }
+        input, select { 
+            width: 100%; 
+            padding: 10px; 
+            margin-top: 5px; 
+            margin-bottom: 15px; 
+            border: 1px solid #ced4da; 
+            border-radius: 5px; 
+            box-sizing: border-box;
+        }
+        .btn-submit {
+            background: #28a745;
+            color: white;
+            border: none;
+            padding: 12px;
+            width: 100%;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        /* Barra de Navegação Inferior */
+        nav { 
+            display: flex; 
+            justify-content: space-around; 
+            background: #ffffff; 
+            border-top: 1px solid #dee2e6; 
+            position: absolute; 
+            bottom: 0; 
+            width: 100%; 
+            padding: 10px 0; 
+        }
+        
+        nav button { 
+            flex: 1; 
+            background: none; 
+            border: none; 
+            font-size: 12px; 
+            color: #6c757d; 
+            cursor: pointer; 
+            padding: 10px; 
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        nav button.active { 
+            color: #004a8f; 
+            font-weight: bold; 
+        }
+    </style>
+</head>
+<body>
+
+    <div class="app-container">
+        <!-- Cabeçalho -->
+        <header>
+            <h1>Fórum Pampulha e Região</h1>
+        </header>
+
+        <!-- Área Central da Aplicação -->
+        <main>
+            
+            <!-- ABA 1: Fóruns de Avisos -->
+            <section id="aba-avisos" class="tab-content active">
+                <h3 style="color: #343a40;">Avisos Recentes</h3>
+                
+                <div class="card">
+                    <h4>Bairro São Luís</h4>
+                    <p><strong>Aviso Comunitário:</strong> Alerta de furtos na região na última noite. Recomenda-se reforçar a iluminação das varandas. Reunião com a polícia agendada para quinta-feira.</p>
+                </div>
+                <div class="card">
+                    <h4>Ouro Preto</h4>
+                    <p><strong>Obras:</strong> A via principal estará cortada amanhã de manhã para manutenção na rede de esgotos. Procurem rotas alternativas.</p>
+                </div>
+                <div class="card">
+                    <h4>Bandeirantes</h4>
+                    <p><strong>Comércio:</strong> Nova associação de comerciantes formada para discutir a instalação de câmaras partilhadas.</p>
+                </div>
+            </section>
+
+            <!-- ABA 2: Calendário de Eventos -->
+            <section id="aba-eventos" class="tab-content">
+                <h3 style="color: #343a40;">Próximos Eventos</h3>
+                
+                <div class="card">
+                    <h4>Volta Internacional da Pampulha</h4>
+                    <p><strong>Data:</strong> Dezembro<br>
+                    <strong>Detalhes:</strong> O trânsito em toda a orla será alterado a partir das 5h da manhã. Evite circular de carro na região.</p>
+                </div>
+                <div class="card">
+                    <h4>Feira de Artesanato do Mineirinho</h4>
+                    <p><strong>Data:</strong> Todos os domingos<br>
+                    <strong>Detalhes:</strong> Venha apoiar os pequenos produtores e o comércio local.</p>
+                </div>
+                <div class="card">
+                    <h4>Jogo no Mineirão</h4>
+                    <p><strong>Data:</strong> Quarta-feira, 21h30<br>
+                    <strong>Detalhes:</strong> Previsão de grande fluxo de adeptos. Reforço policial já solicitado para o entorno.</p>
+                </div>
+            </section>
+
+            <!-- ABA 3: Informações de Segurança -->
+            <section id="aba-seguranca" class="tab-content">
+                <h3 style="color: #343a40;">Canais de Emergência</h3>
+                
+                <a href="tel:190" class="contact-btn" style="background:#004a8f;">Polícia Militar (190)</a>
+                <a href="tel:193" class="contact-btn" style="background:#dc3545;">Bombeiros (193)</a>
+                <a href="tel:199" class="contact-btn" style="background:#fd7e14;">Defesa Civil (199)</a>
+                <a href="tel:180" class="contact-btn" style="background:#6f42c1;">Denúncia de Violência Doméstica (180)</a>
+                
+                <h3 style="color: #343a40; margin-top: 25px;">Postos de Apoio e Delegacias</h3>
+                <div class="map-placeholder">
+                    [ Mapa Interativo da Pampulha Aqui ]
+                </div>
+            </section>
+
+            <!-- ABA 4: Perfil e Dados do Utilizador -->
+            <section id="aba-perfil" class="tab-content">
+                <h3 style="color: #343a40;">O Meu Perfil</h3>
+                
+                <div style="text-align: center; margin-bottom: 20px;">
+                    <!-- Espaço para Foto de Perfil -->
+                    <div style="width: 100px; height: 100px; background: #ced4da; border-radius: 50%; margin: 0 auto 10px; display: flex; align-items: center; justify-content: center; color: #6c757d;">
+                        Foto
+                    </div>
+                    <a href="#" style="font-size: 14px; color: #004a8f;">Alterar Fotografia</a>
+                </div>
+
+                <form onsubmit="event.preventDefault(); alert('Perfil guardado com sucesso!');">
+                    <label>Nome Completo:</label>
+                    <input type="text" placeholder="Ex: Maria Joana da Silva" required>
+                    
+                    <label>Idade:</label>
+                    <input type="number" placeholder="A tua idade" required>
+                    
+                    <label>Categoria na Região:</label>
+                    <select required>
+                        <option value="">Selecione uma opção...</option>
+                        <option value="morador">Morador</option>
+                        <option value="comerciante">Comerciante</option>
+                        <option value="estudante">Estudante (UFMG)</option>
+                        <option value="visitante">Visitante / Turista</option>
+                    </select>
+
+                    <label>Palavra-passe:</label>
+                    <input type="password" placeholder="Define a tua palavra-passe" required>
+
+                    <button type="submit" class="btn-submit">Guardar Dados</button>
+                </form>
+            </section>
+
+        </main>
+
+        <!-- Barra de Navegação -->
+        <nav>
+            <button class="nav-btn active" onclick="trocarAba('aba-avisos', this)">
+                <span style="font-size: 20px; margin-bottom: 2px;">💬</span>
+                Avisos
+            </button>
+            <button class="nav-btn" onclick="trocarAba('aba-eventos', this)">
+                <span style="font-size: 20px; margin-bottom: 2px;">📅</span>
+                Eventos
+            </button>
+            <button class="nav-btn" onclick="trocarAba('aba-seguranca', this)">
+                <span style="font-size: 20px; margin-bottom: 2px;">🛡️</span>
+                Segurança
+            </button>
+            <button class="nav-btn" onclick="trocarAba('aba-perfil', this)">
+                <span style="font-size: 20px; margin-bottom: 2px;">👤</span>
+                Perfil
+            </button>
+        </nav>
+    </div>
+
+    <!-- Script para fazer a interatividade das abas -->
+    <script>
+        function trocarAba(abaId, botaoClicado) {
+            // 1. Esconde todos os separadores
+            const abas = document.querySelectorAll('.tab-content');
+            abas.forEach(aba => {
+                aba.classList.remove('active');
+            });
+
+            // 2. Remove o estado "ativo" de todos os botões da barra de navegação
+            const botoes = document.querySelectorAll('.nav-btn');
+            botoes.forEach(botao => {
+                botao.classList.remove('active');
+            });
+
+            // 3. Mostra o separador correto e pinta o botão correspondente
+            document.getElementById(abaId).classList.add('active');
+            botaoClicado.classList.add('active');
+        }
+    </script>
+</body>
+</html>
